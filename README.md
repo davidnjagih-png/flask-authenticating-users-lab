@@ -1,5 +1,18 @@
 # Lab: Authenticating Users
 
+## Features
+
+A Flask API and React blog with a basic session-based login:
+
+| Endpoint         | Method   | Behavior                                                                  |
+| ---------------- | -------- | ------------------------------------------------------------------------- |
+| `/login`         | `POST`   | Looks up a user by `username`, stores `user_id` in the session, returns the user (`200`). Returns `404` if the username doesn't exist. |
+| `/logout`        | `DELETE` | Clears `user_id` from the session, returns no data (`204`).               |
+| `/check_session` | `GET`    | Returns the logged-in user (`200`), or no data (`401`) if nobody is logged in. This keeps a user logged in across page refreshes. |
+
+The session is stored in a signed cookie, which the React `proxy` setting in
+`client/package.json` lets the browser send to the Flask server.
+
 ## Scenario
 
 In this lab, we'll continue working on the blog site from the last lab and set
